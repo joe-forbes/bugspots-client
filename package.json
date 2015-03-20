@@ -1,0 +1,7 @@
+{
+  "name": "bugspots-client",
+  "version": "0.0.1",
+  "dependencies": {
+    "bugspots": "^1.0.0"
+  }
+}
