@@ -17,6 +17,7 @@ var processResults = function (err, hotspots) {
 
 var options = {
   repo: '/home/joe/git/github/django/django-trunk',
+  branch: 'stable/1.7.x',
   regex: /\b(fix(es|ed)?|close(s|d)?)\b/i,
   useRelativeDates: true,
   depth: 5000,
