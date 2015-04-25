@@ -1,26 +1,27 @@
-/**
- * Created by joe on 3/20/15.
- */
-var Bugspots = require('bugspots');
-
-var bugspots = new Bugspots();
-
-var logger = require('./util/logger');
+'use strict';
 var configger = require("./util/configger");
-var packageJson = require('./package.json');
 var config = configger.load();
-
 if (!config.hasOwnProperty('tracListFile') && (config.bugspotsOptions.regexPattern && config.bugspotsOptions.regexOptions)) {
   config.bugspotsOptions.regex = new RegExp(config.bugspotsOptions.regexPattern, config.bugspotsOptions.regexOptions);
 }
 
+var logger = require('./util/logger');
 logger.addTargets(config.loggingTargets);
 
+var packageJson = require('./package.json');
 logger.info("bugspots-client version: " + packageJson.version);
-logger.debug("config: " + JSON.stringify(config, {depth: null}));
 logger.debug("package.json: " + JSON.stringify(packageJson, {depth: null}));
+logger.debug("config: " + JSON.stringify(config, {depth: null}));
+
+var Bugspots = require('bugspots');
+var bugspots = new Bugspots();
+
+var fileList = null;
+var tracList = {};
 
 var commitIdsSeen = [];
+var LineByLineReader = require('line-by-line');
+var filesToRead = 1;
 
 var processResults = function (err, hotspots) {
   if (err) {
@@ -32,34 +33,39 @@ var processResults = function (err, hotspots) {
 
   hotspots.forEach(function (hotspot) {
     if (!config.fileListFile || fileList['./' + hotspot.file]) {
-      hotspotRanking++
-      console.log(hotspot.file + '\t' + hotspotRanking + '\t' + hotspot.fixCommits + '\t' + hotspot.firstCommit.toISOString() + '\t' + hotspot.lastCommit.toISOString() + '\t' + hotspot.score);
+      console.log([hotspot.file, ++hotspotRanking, hotspot.fixCommits, hotspot.firstCommit.toISOString(),
+        hotspot.lastCommit.toISOString(), hotspot.score].join('\t'));
     } else {
       logger.debug('skipping deleted file ' + hotspot.file);
     }
-  })
+  });
 };
 
-var linkedTracIssueTypeCommitInclusionDecisionHandler = function (commit) {
+var tracIssueTypeCommitFilter = function (commit) {
 
-  if (commitIdsSeen.indexOf(commit.id) != -1) {
-    logger.warn('Duplicate commitId: ' + commitId);
+  if (commitIdsSeen.indexOf(commit.id) !== -1) {
+    logger.warn('Duplicate commit: ' + commit.id);
     return false;
-  } else {
-    commitIdsSeen.push(commit.id)
   }
 
-  var s = commit.message.split('#');
+  commitIdsSeen.push(commit.id);
 
-  if (s.length < 2) return false;
+  var s = commit.message.split('#'),
+    tracId = 'does not exist',
+    poundSign = 1,
+    m,
+    tracItem;
 
-  var tracId = 'does not exist';
-  var poundSign = 1;
+  if (s.length < 2) {
+    return false;
+  }
 
   // get number
   while (poundSign < s.length && !tracList[tracId]) {
-    var m = s[poundSign].match(/^(\d*).*/);
-    if (m) tracId = m[1];
+    m = s[poundSign].match(/^(\d*).*/);
+    if (m) {
+      tracId = m[1];
+    }
     poundSign++;
   }
 
@@ -68,28 +74,23 @@ var linkedTracIssueTypeCommitInclusionDecisionHandler = function (commit) {
     return false;
   }
 
-  var tracItem = tracList[m[1]];
+  tracItem = tracList[m[1]];
 
-  return !!('bug' == tracItem.type.toLowerCase() || 'defect' == tracItem.type.toLowerCase());
+  return !!('bug' === tracItem.type.toLowerCase() || 'defect' === tracItem.type.toLowerCase());
 
 };
 
-var readerEndHandler = function() {
+var readerEndHandler = function () {
   // All lines are read, file is closed now.
   filesToRead--;
   if (0 === filesToRead) {
     if (config.hasOwnProperty('tracListFile')) {
-      bugspots.scan(config.bugspotsOptions, processResults, linkedTracIssueTypeCommitInclusionDecisionHandler);
+      bugspots.scan(config.bugspotsOptions, processResults, tracIssueTypeCommitFilter);
     } else {
-      bugspots.scan(config.bugspotsOptions, processResults)
+      bugspots.scan(config.bugspotsOptions, processResults);
     }
   }
-}
-
-var tracList = {};
-
-var LineByLineReader = require('line-by-line');
-var filesToRead = 1;
+};
 
 if (config.tracListFile) {
   filesToRead++;
@@ -118,18 +119,16 @@ if (config.tracListFile) {
   tracListReader.on('end', readerEndHandler);
 }
 
-var fileList = null;
-
 if (config.fileListFile) {
   fileList = {};
   filesToRead++;
   var fileListReader = new LineByLineReader(config.fileListFile);
   fileListReader.on('error', function (err) {
     logger.error(err);
-    console.error('error reading fileList:' + err)
+    console.error('error reading fileList:' + err);
   });
 
-  fileListReader.on('line', function(line) {
+  fileListReader.on('line', function (line) {
     fileList[line] = line;
   });
 

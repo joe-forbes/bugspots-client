@@ -1,0 +1,25 @@
+{
+  "tracListFile": "/home/joe/joe.forbes@gmail.com/CLEE/Metrics/hw4/django/tracDump.csv",
+  "fileListFile": "/home/joe/joe.forbes@gmail.com/CLEE/Metrics/hw4/django/filelists/1.4.0files.txt",
+  "bugspotsOptions": {
+    "headId": "1.4",
+    "repo": "/home/joe/git/github/django/django-trunk",
+    "useRelativeDates": true,
+    "maxDepth": 5000,
+    "batchSize": 100
+  },
+  "loggingTargets": [
+    {
+      "targetType": "file",
+      "targetConfig": {
+        "level": "debug",
+        "filename": "./logs/bugspots-client.log",
+        "handleExceptions": true,
+        "json": false,
+        "maxsize": 5242880,
+        "maxFiles": 5,
+        "colorize": false
+      }
+    }
+  ]
+}
