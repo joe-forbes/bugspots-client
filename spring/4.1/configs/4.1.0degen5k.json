@@ -1,12 +1,14 @@
 {
-  "fileListFile": "./spring/4.1/4.1.6files.txt",
-  "tracListFile": "./spring/springJira.csv",
+  "fileListFile": "./spring/4.1/4.1.0files.txt",
   "bugspotsOptions": {
-    "headId": "v4.1.6.RELEASE",
-    "tailId": "v4.1.0.RELEASE",
+    "headId": "v4.1.0.RELEASE",
     "repo": "/home/joe/git/github/spring-projects/spring-framework",
+    "regexSpec": {
+      "pattern": ".*",
+      "options": "i"
+    },
     "useRelativeDates": true,
-    "maxDepth": 50,
+    "maxDepth": 5000,
     "batchSize": 100
   },
   "loggingTargets": [

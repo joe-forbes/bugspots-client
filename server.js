@@ -50,7 +50,9 @@ var tracIssueTypeCommitFilter = function (commit) {
 
   commitIdsSeen.push(commit.id);
 
-  var s = commit.message.split('#'),
+  //TODO: REMOVE THIS DISGUSTING SLIMY HACK!
+  var m = commit.message.replace(/SPR-/g, '#'),
+    s = m.split('#'),
     tracId = 'does not exist',
     poundSign = 1,
     m,

@@ -6,7 +6,7 @@
     "tailId": "v4.1.0.RELEASE",
     "repo": "/home/joe/git/github/spring-projects/spring-framework",
     "useRelativeDates": true,
-    "maxDepth": 50,
+    "maxDepth": 5000,
     "batchSize": 100
   },
   "loggingTargets": [

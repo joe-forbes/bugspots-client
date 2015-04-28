@@ -1,12 +1,11 @@
 {
-  "fileListFile": "./spring/4.1/4.1.6files.txt",
-  "tracListFile": "./spring/springJira.csv",
+  "fileListFile": "./fileLists/django/1.4.20files.txt",
   "bugspotsOptions": {
-    "headId": "v4.1.6.RELEASE",
-    "tailId": "v4.1.0.RELEASE",
-    "repo": "/home/joe/git/github/spring-projects/spring-framework",
+    "headId": "1.4.20",
+    "tailId": "1.4",
+    "repo": "/home/joe/git/github/django/django-trunk",
     "useRelativeDates": true,
-    "maxDepth": 50,
+    "maxDepth": 5000,
     "batchSize": 100
   },
   "loggingTargets": [

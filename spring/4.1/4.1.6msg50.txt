@@ -1,0 +1,12 @@
+spring-context/src/main/java/org/springframework/cache/annotation/ProxyCachingConfiguration.java	1	1	2015-03-25T14:26:00.000Z	2015-03-25T14:26:00.000Z	0.4999999986487458
+spring-context/src/main/java/org/springframework/cache/annotation/AbstractCachingConfiguration.java	2	1	2015-03-25T14:26:00.000Z	2015-03-25T14:26:00.000Z	0.4999999986487458
+spring-context-support/src/test/java/org/springframework/cache/jcache/config/JCacheJavaConfigTests.java	3	1	2015-03-25T14:26:00.000Z	2015-03-25T14:26:00.000Z	0.4999999986487458
+spring-context-support/src/main/java/org/springframework/cache/jcache/interceptor/DefaultJCacheOperationSource.java	4	1	2015-03-25T14:26:00.000Z	2015-03-25T14:26:00.000Z	0.4999999986487458
+spring-context-support/src/main/java/org/springframework/cache/jcache/config/AbstractJCacheConfiguration.java	5	1	2015-03-25T14:26:00.000Z	2015-03-25T14:26:00.000Z	0.4999999986487458
+spring-core/src/main/java/org/springframework/core/convert/support/GenericConversionService.java	6	1	2015-03-24T23:59:33.000Z	2015-03-24T23:59:33.000Z	0.4302109116965573
+spring-core/src/test/java/org/springframework/core/convert/support/GenericConversionServiceTests.java	7	1	2015-03-24T23:59:33.000Z	2015-03-24T23:59:33.000Z	0.4302109116965573
+spring-web/src/test/java/org/springframework/web/util/ContentCachingRequestWrapperTests.java	8	1	2015-03-13T15:11:17.000Z	2015-03-13T15:11:17.000Z	0.0037239571027598254
+spring-web/src/main/java/org/springframework/web/util/ContentCachingRequestWrapper.java	9	1	2015-03-13T15:11:17.000Z	2015-03-13T15:11:17.000Z	0.0037239571027598254
+spring-core/src/main/java/org/springframework/util/ResizableByteArrayOutputStream.java	10	1	2015-03-02T13:00:05.000Z	2015-03-02T13:00:05.000Z	0.000021047342312217316
+spring-beans-groovy/src/main/java/org/springframework/beans/factory/groovy/GroovyBeanDefinitionReader.java	11	1	2015-02-28T22:19:57.000Z	2015-02-28T22:19:57.000Z	0.000009918122506530149
+spring-webmvc/src/main/java/org/springframework/web/servlet/tags/HtmlEscapingAwareTag.java	12	1	2015-02-27T21:43:21.000Z	2015-02-27T21:43:21.000Z	0.00000614417460221472
