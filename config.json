@@ -1,13 +1,10 @@
 {
-  "tracListFile": "./tracLists/django/tracDump.csv",
-  "fileListFile": "./fileLists/django/1.6.11files.txt",
   "bugspotsOptions": {
-    "headId": "1.6.11",
-    "tailId": "1.6",
+    "segmentHeadCommitIdentifier": "master",
     "repo": "/home/joe/git/github/django/django-trunk",
     "useRelativeDates": true,
-    "maxDepth": 5000,
-    "batchSize": 100
+    "depth": 10,
+    "batchSize": 5
   },
   "loggingTargets": [
     {

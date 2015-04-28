@@ -1,8 +1,8 @@
 'use strict';
 var configger = require("./util/configger");
 var config = configger.load();
-if (!config.hasOwnProperty('tracListFile') && (config.bugspotsOptions.regexPattern && config.bugspotsOptions.regexOptions)) {
-  config.bugspotsOptions.regex = new RegExp(config.bugspotsOptions.regexPattern, config.bugspotsOptions.regexOptions);
+if (!config.hasOwnProperty('tracListFile') && (config.bugspotsOptions.regexSpec)) {
+  config.bugspotsOptions.regex = new RegExp(config.bugspotsOptions.regexSpec.pattern, config.bugspotsOptions.regexSpec.options);
 }
 
 var logger = require('./util/logger');

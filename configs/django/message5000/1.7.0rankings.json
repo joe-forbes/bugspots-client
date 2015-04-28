@@ -1,9 +1,7 @@
 {
-  "tracListFile": "./tracLists/django/tracDump.csv",
-  "fileListFile": "./fileLists/django/1.6.11files.txt",
+  "fileListFile": "./fileLists/django/1.7.0files.txt",
   "bugspotsOptions": {
-    "headId": "1.6.11",
-    "tailId": "1.6",
+    "headId": "1.7",
     "repo": "/home/joe/git/github/django/django-trunk",
     "useRelativeDates": true,
     "maxDepth": 5000,

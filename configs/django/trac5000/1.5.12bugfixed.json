@@ -1,6 +1,6 @@
 {
-  "tracListFile": "/home/joe/joe.forbes@gmail.com/CLEE/Metrics/hw4/django/tracDump.csv",
-  "fileListFile": "/home/joe/joe.forbes@gmail.com/CLEE/Metrics/hw4/django/filelists/1.5.12files.txt",
+  "tracListFile": "./tracLists/django/tracDump.csv",
+  "fileListFile": "./fileLists/django/1.5.12files.txt",
   "bugspotsOptions": {
     "headId": "1.5.12",
     "tailId": "1.5",

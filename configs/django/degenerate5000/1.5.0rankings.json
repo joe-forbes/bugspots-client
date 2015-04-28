@@ -1,10 +1,12 @@
 {
-  "tracListFile": "./tracLists/django/tracDump.csv",
-  "fileListFile": "./fileLists/django/1.6.11files.txt",
+  "fileListFile": "./fileLists/django/1.5.0files.txt",
   "bugspotsOptions": {
-    "headId": "1.6.11",
-    "tailId": "1.6",
+    "headId": "1.5",
     "repo": "/home/joe/git/github/django/django-trunk",
+    "regexSpec": {
+      "pattern": ".*",
+      "options": "i"
+    },
     "useRelativeDates": true,
     "maxDepth": 5000,
     "batchSize": 100

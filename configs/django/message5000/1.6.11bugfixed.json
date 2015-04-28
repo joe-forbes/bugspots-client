@@ -1,5 +1,4 @@
 {
-  "tracListFile": "./tracLists/django/tracDump.csv",
   "fileListFile": "./fileLists/django/1.6.11files.txt",
   "bugspotsOptions": {
     "headId": "1.6.11",
